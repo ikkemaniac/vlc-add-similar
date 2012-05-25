@@ -19,12 +19,12 @@
 --[[ Extension description ]]
 
 	function descriptor()
-		return { title = "Add Similar" ;
+		return { title = "Add Similar With Sort" ;
 				 version = "alpha" ;
 				 author = "VideoLAN" ;
 				 shortdesc = "Quickly adds files similar to the one you're playing";
-				 description = "<h1>Add Similar</h1>"
-							.. "When you're playing a file, use Add Similar to"
+				 description = "<h1>Add Similar With Sort</h1>"
+				 			.. "When you're playing a file, use Add Similar to"
 							.. "easily add files that are similar (like those in a series).";
 				 capabilities = { "input-listener", "meta-listener" } }
 	end
@@ -91,6 +91,7 @@ function find_similar(item)
 			
 			vlc.msg.dbg("[Add Similar] adding: "..path..file)
 			vlc.playlist.enqueue({new_item})
+			vlc.playlist.sort('title')
 		end
 		vlc.deactivate()
 	end
@@ -175,6 +176,7 @@ function find_files(item)
 	for file,p in pairs(score) do 
 		if p > cutoff then
 			table.insert(similar_media,file)
+			table.sort(similar_media)
 		end
 	end
 	
