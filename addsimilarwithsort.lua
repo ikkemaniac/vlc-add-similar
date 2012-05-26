@@ -51,6 +51,7 @@
 --[[ Start ]]
 
 	function start()
+		local item = {}
 		item = vlc.item or vlc.input.item() -- check if an item is playing
 		if not item then -- return an alert box explaining what the user should do
 			alert("Using Add Similar",
