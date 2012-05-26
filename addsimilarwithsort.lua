@@ -19,7 +19,7 @@
 --[[ Extension description ]]
 
 	function descriptor()
-		return { title = "Add Similar With Sort" ;
+		return { title = "Add Similar With Sort And Prevent Duplicates";
 				 version = "alpha" ;
 				 author = "VideoLAN" ;
 				 shortdesc = "Quickly adds files similar to the one you're playing";
