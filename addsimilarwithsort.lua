@@ -32,6 +32,7 @@
 --[[ Global vars ]]
 	path = nil
 	target = nil
+	existing_items = {}
 
 
 --[[ Hooks ]]
@@ -53,6 +54,15 @@
 	function start()
 		local item = {}
 		item = vlc.item or vlc.input.item() -- check if an item is playing
+		
+		local items = {}
+		items = vlc.playlist.get("playlist",false).children	-- get current playlist items
+		
+		for i, v in pairs(items) do
+			table.insert(existing_items,v.path) -- add URL's to a table
+		end
+		
+		-- vlc.deactivate()
 		if not item then -- return an alert box explaining what the user should do
 			alert("Using Add Similar",
 						"When you're playing a file, use Add Similar to "
