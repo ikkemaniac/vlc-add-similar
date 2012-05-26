@@ -123,8 +123,10 @@ function find_similar(item)
 			new_item.name = file
 			
 			vlc.msg.dbg("[Add Similar] adding: "..path..file)
-			vlc.playlist.enqueue({new_item})
-			vlc.playlist.sort('title')
+			if not table_contains(new_item.path) then
+				vlc.playlist.enqueue({new_item})
+				vlc.playlist.sort('title')
+			end
 		end
 		vlc.deactivate()
 	end
