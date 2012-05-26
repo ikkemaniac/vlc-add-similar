@@ -74,7 +74,29 @@
 			find_similar(item) -- starts the "Find Similar" process
 		end
 	end
+	
+function table_contains(filePath)
+  for _, value in pairs(existing_items) do
+    if value == filePath then
+	  return true
+    end
+  end
+  return false
+end
 
+-- debugging helper
+-- function dump(o)
+	-- if type(o) == 'table' then
+		-- local s = '{ '
+		-- for k,v in pairs(o) do
+			-- if type(k) ~= 'number' then k = '"'..k..'"' end
+				-- s = s .. '['..k..'] = ' .. dump(v) .. ','
+			-- end
+		-- return s .. '} '
+	-- else
+		-- return tostring(o)
+	-- end
+-- end
 	
 function find_similar(item)
 	vlc.msg.dbg("[Add Similar] File selected: "..vlc.strings.decode_uri((item:uri())))
